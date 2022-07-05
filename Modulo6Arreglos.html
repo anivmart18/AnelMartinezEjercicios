@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modulo 6 - Ejercicio Arreglos</title>
+</head>
+<body>
+<script>
+    var amigos = ["Pedro","Maria","Joan","Pili"];
+
+    // 1- queremos que escriba "mis amigos son maria y joan. rellena los   huecos."
+    document.write("Mis amigos son:"+ "<b>" + amigos[1] + "</b>" + " y <b>" + amigos[2]+"</b>");
+
+    /*2- ¿dónde está el fallo?
+    var enemigos = ["scipion" + "scorpio" + "black"];*/
+
+    /*Respuesta: al usar el signo "+" esta contatenando y solo tendra un elemento el array
+    debe de usar el "," para indicar como separar cada elemento */
+
+    var enemigos = ["Scipion" , "Scorpio" ,"Black"];
+
+
+    // 3- escribe en el documento web "scorpio es peor que black" demodo que scorpio esté en negrita y la letra sea de color rojo.
+
+    document.write("<br>");
+    document.write("<b style='color:red;font-weight:bold;'>" + enemigos[1] + "</b>" + " es peor que " + enemigos[2]);
+
+
+// 4- escribe una instrucción que devuelva la longitud del array amigos sea cual sea el número de datos almacenados en su interior.
+    document.write("<br>");
+    document.write("Longitud de arreglo de amigos es:" + amigos.length );
+    document.write("<br>");
+    document.write("Longitud de arreglo de enemigos es:" + enemigos.length );
+
+    // 5- "aitana" es también tu amiga. Escribe una instrucción que la añada al final de la lista amigos
+
+    amigos.push("Aitana");
+    // Opcion 2: amigos[amigos.length]="Aitana";
+
+    // 6 - "pedro" ha cambiado de nombre. ahora se llama "nacho". actualiza con una instrucción tu lista de amigos
+    amigos[0]="Nacho";
+
+    // 7 - "tor" es ahora tu enemigo. añádelo con una instrucción al final de tu lista de enemigos.
+    enemigos.push("Thor");
+    // Opcion 2: enemigos[enemigos.length]="Thor";
+
+    document.write("<br>");
+    document.write("Mi lista de amigos actualizada es:" + amigos );
+    document.write("<br>");
+    document.write("Mi lista de enemigos actualizada es:" + enemigos );
+</script>
+</body>
+</html>

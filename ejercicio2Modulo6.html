@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2 Modulo 6</title>
+</head>
+<body>
+<script>
+const inicio= ['unacadena', 3 , 'unacadena2' , 1, 10,500,1,10,true];
+
+function nuevoArreglo(arr) {
+    let arrNuevo =  [];
+    for (var i = 0; i < arr.length; i++) {
+        if( typeof arr[i] === 'number'){
+             arrNuevo.push(arr[i]);
+        }
+    }
+    return arrNuevo;
+}
+
+ function arreglarMayorMenor(arr) {
+       var temp = 0;
+       for (var i = 0; i < arr.length; i++) {
+               for (var j = 1; j < (arr.length - i); j++) {
+                   if (arr[j - 1] > arr[j]) {
+                       temp = arr[j - 1];
+                       arr[j - 1] = arr[j];
+                       arr[j] = temp;
+                   }
+               }
+       }
+   return arr;
+  }
+
+console.log("El arreglo nuevo de solo numeros es:  \n" +nuevoArreglo(inicio));
+console.log("El arreglo ordenado de mayor a menor es:  \n" +arreglarMayorMenor(nuevoArreglo(inicio)));
+
+</script>
+</body>
+</html>

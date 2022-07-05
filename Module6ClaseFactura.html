@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modulo 6 Clase Factura</title>
+</head>
+<body>
+<script>
+
+
+    class Factura{
+        constructor(numero,cliente,divisa,subtotal,IVA) {
+            this.numero=numero;
+            this.cliente=cliente;
+            this.divisa=divisa;
+            this.subtotal=subtotal;
+            this.IVA=IVA;
+        }
+
+     //Metodo aplicar descuento
+        aplicarDescuento(porcentaje) {
+            this.subtotal -= this.subtotal / 100 * porcentaje;
+        }
+
+
+
+
+    }
+
+    //Ingresar 5 registros de la clase factura
+    const fact1 = new Factura(152896, "Marcos Alfonso ", "usd", 8.49, 12);
+    const fact2 = new Factura(152897, "Escuela de Internet ", "usd", 45258, 12);
+    const fact3 = new Factura(152898, "Maria Elisa Morales ", "usd", 4500, 12);
+    const fact4 = new Factura(152899, "Carlos Sarangui ", "usd", 78591, 12);
+    const fact5 = new Factura(152900, "La Universal SA ", "usd", 8524, 12);
+
+
+  fact1.aplicarDescuento(35);
+  console.log("La factura " + fact1.numero + " tiene ahora un total con descuento de: " + fact1.subtotal + " " + fact1.divisa);
+
+    //Funcion Calcula SUBTOTAL CON IVA, calcula en una sola funcion ya el subtotal con IVA
+    function calculoIVA(valor) {
+        var totalIVA=Math.round((valor*fact1.IVA)+valor);
+        return totalIVA;
+
+    }
+
+    //Valor del total del IVA: subtotal + IVA
+    console.log("La factura " + fact1.numero + " tiene ahora un total con IVA de: " + calculoIVA(fact1.subtotal) + " " + fact1.divisa);
+
+
+    //Imprimir valores de Arreglo de facturas
+    let facturas = new Array(fact1,fact2,fact3,fact4,fact5);
+    for (var i = 0; i < facturas.length; i++) {
+        console.log("La factura " + facturas[i].numero + " tiene un subtotal de : " + facturas[i].subtotal+ " IVA de" +facturas[i].IVA + "y un total de "+calculoIVA(facturas[i].subtotal)+facturas[i].divisa);
+    }
+</script>
+</body>
+</html>

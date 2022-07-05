@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modulo6 Ejercicio 1</title>
+</head>
+<body>
+<script>
+    function Fibonacci(num){
+        var arrfibo = [];
+        arrfibo[0] = 0;
+        arrfibo[1] = 1;
+        for (var i = 2; i < num; i++) {
+            arrfibo[i] = arrfibo[i - 2] + arrfibo[i - 1];
+        }
+        return arrfibo;
+    }
+    var numeroDeElementos=parseInt(prompt("Ingrese el numero de elementos que desea generar de la seie FIBONACCI:"));
+    Fibonacci(numeroDeElementos);
+
+    //Imprimir por consola
+    console.log("Los \n" + numeroDeElementos + "\n" + "numeros de la serie de FIBONACCI son:" );
+    for (var i = 0; i < Fibonacci(numeroDeElementos).length; i++) {
+        console.log( Fibonacci(numeroDeElementos)[i]);
+
+    }
+
+
+    document.write("Los \n" + numeroDeElementos + "\n" + "numeros de la serie de FIBONACCI son:" );
+    document.write("<br>");
+    for (var i = 0; i < Fibonacci(numeroDeElementos).length; i++) {
+        document.write( Fibonacci(numeroDeElementos)[i]);
+        document.write("<br>");
+
+    }
+</script>
+</body>
+</html>
