@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modulo 6 Herencia</title>
+</head>
+<body>
+<script>
+
+    //Clase Empleado
+    class Empleado {
+       constructor(nombre,departamento) {
+           this.nombre = nombre || "";
+           this.departamento = departamento || "General";
+       }
+   }
+
+   //Clase Director hereda de clase empleado atributos de nombre y departamento
+   class Director extends Empleado {
+       constructor(nombre,departamento,informes) {
+           super(nombre);
+           super(departamento);
+           this.informes=informes || [];
+       }
+   }
+
+    //Clase Trabajador hereda de clase empleado atributos de nombre y departamento
+   class Trabajador extends Empleado{
+       constructor(nombre,departamento, proyectos) {
+           super(nombre);
+           super(departamento);
+           this.proyectos=proyectos || [];
+       }
+   }
+
+   //Clase Ingeniero extiende de clase Trabajador
+   class Ingeniero extends Trabajador {
+       constructor(nombre,departamento,proyectos,maquina) {
+           super(nombre);
+           super(departamento.departamento="Ingieneria");
+           super(proyectos);
+           this.maquina = maquina || "";
+       }
+   }
+
+    var arkaitz = new Ingeniero("Garro, Arkaitz", ["xhtml", "javascript", "html5"], "Chrome");
+
+
+</script>
+</html>
