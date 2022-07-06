@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-const inicio= ['unacadena', 3 , 'unacadena2' , 1, 10,500,1,10,true];
+const inicio= ['unacadena', 3 , 'unacadena2' , 1, 10,500,false,10,true];
 
 function nuevoArreglo(arr) {
     let arrNuevo =  [];
@@ -19,34 +19,22 @@ function nuevoArreglo(arr) {
 }
 
 function ordenarArreglo(arr) {
-    var temp = false;
-    while (!temp) {
-      temp = true;
-      for (var i = 1; i < arr.length; i += 1) {
-        if (arr[i - 1] > arr[i]) {
-          temp = false;
-          var temp2 = arr[i - 1];
-          arr[i - 1] = arr[i];
-          arr[i] = temp2;
-        }
+    for (var i =0; i < arr.length; i += 1) {
+        for (var j= i+1;j < arr.length; j+= 1)  {
+            if(arr[i] < arr[j]){
+                var temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+            }
 
-      }
-   }
+        }
+    }
     return arr;
 }
 
 
-function reversoArreglo(arr){
-    var arrsalida = [];
-    for (var i = 0; i<= arr.length; i++){
-        arrsalida.push(arr.pop());
-    }
-
-    return arrsalida;
-}
-
 console.log("El arreglo nuevo de solo numeros es:  \n" +nuevoArreglo(inicio));
-console.log("El arreglo ordenado de mayor a menor es:  \n" + reversoArreglo(ordenarArreglo(nuevoArreglo(inicio))));
+console.log("El arreglo ordenado de mayor a menor es:  \n" + ordenarArreglo(nuevoArreglo(inicio)));
 </script>
 </body>
 </html>
