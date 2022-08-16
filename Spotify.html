@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var idcancion = 1;
+    class Cancion{
+        constructor(nombre,duracion,genero){
+            this.nombre=nombre;
+            this.duracion=duracion;
+            this.genero=genero;
+            if(idcancion>0){
+                this.ID=idcancion++;
+            }
+            else{
+                this.ID=idcancion;
+            }
+        }
+
+
+    }
+
+    class Reproductor extends Cancion{
+        constructor(nombre,duracion,ID,genero,listaCanciones,actual,play,listaDePlaylist){
+            super(nombre,duracion,ID,genero);
+            this.listaCanciones=[];
+            this.play=false;
+            this.actual=0;
+            this.listaDePlaylist=[];
+        }
+
+        agregarCancion(Cancion){
+            this.listaCanciones.push(Cancion);
+        }
+
+        mostrarCanciones(){
+            this.listaCanciones.map((Cancion) => {
+                console.log(Cancion.nombre + "" + Cancion.ID);
+            })
+        }
+
+        seleccionarCancion(ID){
+            this.actual=ID;
+        }
+
+
+        playReproducir(){
+            this.play=true;
+        }
+
+        stopReproducir(){
+            this.play=false;
+        }
+
+        buscarCancion(c){
+            console.log(this.listaCanciones.filter(Cancion => Cancion.nombre === c));
+        }
+
+        crearListaDeReproduccion(nombrePlayList, ...cancionesPlayList ){
+            var lista=[];
+            lista.push(nombrePlayList);
+            lista.push(cancionesPlayList);
+            this.listaDePlaylist.push(lista);
+
+        }
+
+        buscarIDCancion(ID){
+            this.listaCanciones.filter(Cancion => {
+                if (Cancion.ID  === ID){
+                    console.log(Cancion.nombre);
+                }
+            });
+        }
+
+
+        seleccionarPlayList(nombrePlayList)  {
+            this.listaDePlaylist.filter(PlayList =>  {
+                if (PlayList[0]===nombrePlayList){
+                    PlayList[1].map((ID) => {
+                        this.buscarIDCancion(ID);
+                        console.log(this.listaDePlaylist);
+                    })
+                }
+                else{
+                    console.log("FALSO NO EXISTE");
+                }
+            })
+        }
+
+        imprimirCatalogo(){
+            this.listaCanciones.map((Cancion) => {
+                console.log(Cancion.nombre + " " + Cancion.ID + " " + Cancion.duracion);
+            })
+        }
+
+        verCatalogoDuracion(mayor){
+            if (mayor === 1){
+                console.log(this.listaCanciones.sort(function (a,b) {return a.duracion - b.duracion
+                }));
+            }
+            else{
+                console.log(this.listaCanciones.sort(function (a,b) {return b.duracion - a.duracion
+                }));
+            }
+
+        }
+
+        verCatalogoAlfabetico(mayor){
+            if (mayor === 1){
+                console.log(this.listaCanciones.sort());
+            }
+            else{
+                console.log(this.listaCanciones.reverse());
+            }
+
+        }
+    }
+
+
+
+
+    var c1 = new Cancion("still love you",3.50,"balada");
+    var c2 = new Cancion("american idiot",4.58,"rock");
+    var c3 = new Cancion("one in a million",5.20,"kpop");
+    var c4 = new Cancion("blue flame",4.52,"kpop");
+    var c5 = new Cancion("if you",5.15,"rock");
+    var c6 = new Cancion("fantastic baby",1.52,"rock");
+    var c7 = new Cancion("go away",7.85,"rock");
+    var c8 = new Cancion("blue",4.52,"rock");
+    var c9 = new Cancion("tomorrow",3.65,"rock");
+    var c10 = new Cancion("burrito sabanero",2.45,"rock");
+    var c11 = new Cancion("one",3.10,"rock");
+    var c12 = new Cancion("maniac",4.55,"rock");
+    var c13 = new Cancion("day & bight",1.50,"rock");
+    var c14 = new Cancion("peek a boo",4.50,"rock");
+    var c15 = new Cancion("bo peep ",3.25,"rock");
+
+
+    var n2= new Reproductor("hola","3.5",4,"rock",[],0,false,[]);
+    //var n2= new Reproductor("Hola","3.5",78,"rock",[c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15],0,false,[]);
+
+    n2.agregarCancion(c1);
+    n2.agregarCancion(c2);
+    n2.agregarCancion(c3);
+    n2.agregarCancion(c4);
+    n2.agregarCancion(c5);
+    n2.agregarCancion(c6);
+    n2.agregarCancion(c7);
+    n2.agregarCancion(c8);
+    n2.agregarCancion(c9);
+    n2.agregarCancion(c10);
+    n2.agregarCancion(c11);
+    n2.agregarCancion(c12);
+    n2.agregarCancion(c13);
+    n2.agregarCancion(c14);
+    n2.agregarCancion(c15);
+
+
+
+    //n2.agregarCancion(n1);
+    //n2.agregarCancion(n3);
+    //console.log(n2.listaCanciones);
+    //console.log(n2.mostrarCanciones());
+    //console.log(n2.buscarCancion("Hola"));
+    //console.log(n2.verCatalogoDuracion(2));
+    //console.log(n2.verCatalogoAlfabetico(2));
+
+    function imprimirMenu(){
+        console.log("1. BUSCAR CANCION POR TITULO");
+        console.log("2. REPRODUCIR CANCION");
+        console.log("3. PARAR MUSICA");
+        console.log("4. CREAR LISTA REPRODUCCION");
+        console.log("5.ORDENAR POR DURACION.");
+        console.log("6.ORDENAR POR TITULO.");
+        console.log("7.IMPRIMIR CATALOGO");
+        console.log("8.IMPRIMIR PLAYLIST");
+        console.log("9.CERRAR MENU");
+    }
+
+
+
+
+
+    do {
+        imprimirMenu();
+        var opcion=parseInt(prompt('INGRESE UNA OPCION DEL MENU:',''));
+        switch (opcion) {
+            case 1: {
+                var cancion = prompt('INGRESAR EL NOMBRE DE LA CANCION:');
+                n2.buscarCancion(cancion);
+                break;
+            }
+            case 2: {
+                var cancion =parseInt(prompt('INGRESAR ID CANCION QUE DESEA REPRODUCIR:',''));
+                n2.playReproducir();
+                n2.buscarIDCancion(cancion);
+                n2.actual = cancion; //Para reproducir la cancion actual
+                break;
+            }
+            case 3: {
+                n2.stopReproducir();
+                break;
+            }
+
+            case 4: {
+                var nombre = prompt('INGRESAR NOMBRE DE LA LISTA DE REPRODUCCION:');
+                var arreglo = prompt('INGRESE EL ID DE LAS CANCIONES SEPARADAS POR COMA:');
+                const arregloN = arreglo.split(",");
+                n2.crearListaDeReproduccion(nombre, arregloN);
+                break;
+            }
+            case 5: {
+                var val = prompt('INGRESE 1.ORDEN MENOR A MAYOR o 2.ORDEN DE MAYOR A MENOR:');
+                n2.verCatalogoDuracion(val);
+                break;
+            }
+            case 6: {
+                var val = prompt('INGRESE 1.ORDEN ASCENDENTE o 2.ORDEN DESCENDENTE:');
+                n2.verCatalogoAlfabetico(val);
+                break;
+            }
+            case 7:{
+                n2.imprimirCatalogo();
+                break;
+            }
+
+
+        }
+    }
+
+    while (opcion!=9);
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>
